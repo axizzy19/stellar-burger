@@ -3,7 +3,7 @@ import { TConstructorItems, TUser } from '@utils-types';
 
 import { TOrder } from '@utils-types';
 
-import { orderBurgerApi } from '@api';
+import { orderBurgerApi } from '../utils/burger-api';
 
 export const newOrder = createAsyncThunk('order/newOrder', orderBurgerApi);
 
@@ -14,7 +14,7 @@ export interface TNewOrderState {
   constructorItems: TConstructorItems;
 }
 
-const initialState: TNewOrderState = {
+export const initialState: TNewOrderState = {
   orderRequest: false,
   orderModalData: null,
   error: undefined,
@@ -33,12 +33,6 @@ export const newOrderSlice = createSlice({
     closeOrderRequest(state) {
       state.orderRequest = false;
       state.orderModalData = null;
-      state.constructorItems = {
-        bun: {
-          price: 0
-        },
-        ingredients: []
-      };
     }
   },
   selectors: {

@@ -16,11 +16,6 @@ export const IngredientDetails: FC = () => {
   const { ingredients } = useSelector(selectIngredientsState);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (!params.id) {
-  //     navigate('/', { replace: true });
-  //   }
-  // }, []);
   useEffect(() => {
     if (ingredients.length === 0) {
       dispatch(getIngredientsList());
