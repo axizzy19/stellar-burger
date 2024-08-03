@@ -11,18 +11,12 @@ import { ingredientsSlice } from '../slices/ingredientsSlice';
 import { newOrderSlice } from '../slices/newOrderSlice';
 import { userOrdersSlice } from '../slices/userOrdersSlice';
 import { userSlice } from '../slices/userSlice';
+import { rootReducer } from './rootReducer';
 
 //const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 
 const store = configureStore({
-  reducer: {
-    [ingredientsSlice.name]: ingredientsSlice.reducer,
-    [constructorSlice.name]: constructorSlice.reducer,
-    [userSlice.name]: userSlice.reducer,
-    [feedsSlice.name]: feedsSlice.reducer,
-    [newOrderSlice.name]: newOrderSlice.reducer,
-    [userOrdersSlice.name]: userOrdersSlice.reducer
-  },
+  reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
 });
 

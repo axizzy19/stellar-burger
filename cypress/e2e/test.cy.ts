@@ -63,12 +63,20 @@ describe('проверка работоспособности приложени
     constructor.contains('булка');
   })
 
-  it('Открытие и закрытие модального окна с описанием ингредиента', () => {
-    const bun = cy.get(`[data-cy=bun_0]`);
-    bun.click();
+  it('Модальное окно закрыто', () => {
+    cy.get('#modals').children().should('have.length', 0)
+  })
 
-    cy.get(`[data-cy=ingredient_modal]`);
-    cy.get(`[data-cy=close_modal_button]`).click();
+  it('Открытие модального окна', () => {
+    cy.contains('Биокотлета из марсианской Магнолии').click();
+    cy.get('#modals').children().should('have.length', 2);
+    cy.get('#modals').contains('Биокотлета из марсианской Магнолии');
+  })
+
+  it('Закрытие модального окна', () => {
+    cy.contains('Биокотлета из марсианской Магнолии').click();
+    cy.get('#modals').find('button').click();
+    cy.get('#modals').children().should('have.length', 0);
   })
 
   it('Процесс создания нового заказа', () => {
