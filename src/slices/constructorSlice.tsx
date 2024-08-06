@@ -3,12 +3,12 @@ import { TConstructorIngredient } from '@utils-types';
 import { v4 as uuidv4 } from 'uuid';
 import { TConstructorItems } from '@utils-types';
 
-type TConstructorState = {
+export type TConstructorState = {
   bun: TConstructorIngredient | null;
   constructorItems: TConstructorItems;
 };
 
-const initialState: TConstructorState = {
+export const initialState: TConstructorState = {
   bun: null,
   constructorItems: {
     bun: {
@@ -64,7 +64,8 @@ export const constructorSlice = createSlice({
         nextItem,
         action.payload
       );
-    }
+    },
+    clearAll: (state) => (state = initialState)
   },
   selectors: {
     selectConstructorItems: (state) => state.constructorItems
@@ -75,7 +76,8 @@ export const {
   addIngredient,
   deleteIngredient,
   placeIngredientDown,
-  placeIngredientUp
+  placeIngredientUp,
+  clearAll
 } = constructorSlice.actions;
 
 export const { selectConstructorItems } = constructorSlice.selectors;

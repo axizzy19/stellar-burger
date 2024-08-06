@@ -9,7 +9,7 @@ import {
   logoutApi,
   TRegisterData,
   TLoginData
-} from '@api';
+} from '../utils/burger-api';
 
 export const registerUser = createAsyncThunk(
   'user/register',
@@ -39,7 +39,7 @@ export interface TUserState {
   loading: boolean;
 }
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   isAuthenticated: false,
   user: {
     email: '',
